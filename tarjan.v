@@ -583,20 +583,22 @@ split.
   by rewrite rank_infty ?geq_min ?m1_rank //; case: colorP x_sccs2.
 - case: pc22 => [->|m2_reachable].
   + rewrite (minn_idPl _) //; case: pc2=> [->|pc2]; [by left|].
-    case: ltngtP m1_rank => // [m1_lt _|]; last by left.
-    right; exists x => //.
-    case: pc2=> z; rewrite inE => /eqP -> [t x_to_t m1_def].
-    by exists t => //; rewrite s2_def rank_catl // -rank_lt -?m1_def.
+    case: (ltngtP m1 #|V|) => m1_lt //; last by left.
+      right; exists x => //.
+      case: pc2=> z; rewrite inE => /eqP -> [t x_to_t m1_def].
+      by exists t => //; rewrite s2_def rank_catl // -rank_lt -?m1_def.
+    by case: (leq_ltn_trans m1_rank m1_lt); rewrite ltnn.
   + case: (leqP m1 m2) => [m12|/ltnW m21]; last first.
       rewrite (minn_idPr _) //.
       case: m2_reachable => y; rewrite !inE => /andP[_ y_root] [z y_to_z m2_def].
       by right; exists y => //; exists z => //.
     rewrite (minn_idPl _) //.
-    case: ltngtP m1_rank => // [m1_lt _|]; last by left.
-    right; exists x => //; case: pc2=> [m1_infty|[z]].
-      by rewrite m1_infty ltnn in m1_lt.
-    rewrite inE => /eqP -> [t x_to_t m1_def].
-    by exists t => //; rewrite s2_def rank_catl // -rank_lt -?m1_def.
+    case: (ltngtP m1 #|V|) => m1_lt //; last by left.
+      right; exists x => //; case: pc2=> [m1_infty|[z]].
+        by rewrite m1_infty ltnn in m1_lt.
+      rewrite inE => /eqP -> [t x_to_t m1_def].
+      by exists t => //; rewrite s2_def rank_catl // -rank_lt -?m1_def.
+    by case: (leq_ltn_trans m1_rank m1_lt); rewrite ltnn.
 - move=> y.
   rewrite !inE => /andP [y_s0 /existsP[z /and3P [z_s2 zNs0 z_to_y]]].
   move: z_s2; rewrite s2_def mem_cat orbC.
