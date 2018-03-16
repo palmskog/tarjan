@@ -102,7 +102,7 @@ Implicit Type (F : I -> 'I_n.+1).
 Lemma geq_bigmin_cond (P : pred I) F i0 :
   P i0 -> F i0 >= \min_(i | P i) F i.
 Proof. by move=> Pi0; rewrite (bigD1 i0) //= geq_minl. Qed.
-Implicit Arguments geq_bigmin_cond [P F].
+Arguments geq_bigmin_cond [P F].
 
 Lemma geq_bigmin F (i0 : I) : F i0 >= \min_i F i.
 Proof. exact: geq_bigmin_cond. Qed.
@@ -142,15 +142,17 @@ Lemma bigmin_setU (A B : {set I}) F :
   \min_(i in (A :|: B)) F i =
   ord_minn (\min_(i in A) F i) (\min_(i in B) F i).
 Proof.
-(* transitivity (\min_(i in [predU (A :\: B) & B]) F i). *)
-(*   by apply/eq_bigl => y; rewrite !inE; case: (_ \in _) (_ \in _) => [] []. *)
-(* rewrite bigU //=. *)
+transitivity (\min_(i in [predU (A :\: B) & B]) F i).
+  by apply/eq_bigl => y; rewrite !inE; case: (_ \in _) (_ \in _) => [] [].
+rewrite bigU //=.
+  by admit.
+rewrite disjoint_subset.
 Admitted.
 
 End extra_bigmin.
-Implicit Arguments geq_bigmin_cond [I P F].
-Implicit Arguments geq_bigmin [I F].
-Implicit Arguments bigmin_geqP [n I P m F].
-Implicit Arguments bigmin_inf [I P m F].
-Implicit Arguments bigmin_eq_arg [I P F].
+Arguments geq_bigmin_cond [_ I P F].
+Arguments geq_bigmin [_ I F].
+Arguments bigmin_geqP [_ I P m F].
+Arguments bigmin_inf [_ I _ P m F].
+Arguments bigmin_eq_arg [_ I i0 P F].
 
