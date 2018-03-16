@@ -2,6 +2,7 @@ From mathcomp
 Require Import ssreflect ssrfun ssrbool eqtype ssrnat seq choice fintype tuple.
 From mathcomp
 Require Import bigop finset finfun perm fingraph path div.
+From tarjan
 Require Import bigmin extra.
 
 Set Implicit Arguments.

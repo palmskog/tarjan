@@ -1,0 +1,8 @@
+-Q . tarjan
+-arg "-w -notation-overridden,-local-declaration,-redundant-canonical-projection,-projection-no-head-constant"
+bigmin.v
+extra.v
+tarjan_bigmin.v
+tarjan.v
+Kosaraju.v
+
