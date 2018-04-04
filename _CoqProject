@@ -1,8 +1,13 @@
--Q . tarjan
+-Q core tarjan
+-Q extraction/tarjan/coq tarjan
+-Q extraction/tarjan-bigmin/coq tarjan
+-Q extraction/kosaraju/coq tarjan
 -arg "-w -notation-overridden,-local-declaration,-redundant-canonical-projection,-projection-no-head-constant"
-bigmin.v
-extra.v
-tarjan_bigmin.v
-tarjan.v
-kosaraju.v
-
+core/bigmin.v
+core/extra.v
+core/tarjan_bigmin.v
+core/tarjan.v
+core/kosaraju.v
+extraction/tarjan/coq/extract_tarjan.v
+extraction/kosaraju/coq/extract_kosaraju.v
+extraction/tarjan-bigmin/coq/extract_tarjan_bigmin.v
