@@ -1,3 +1,4 @@
 ocaml/ntarjan.ml
 ocaml/ntarjan.mli
 _build
+graph.native
