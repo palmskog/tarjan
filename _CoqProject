@@ -7,3 +7,5 @@ tarjan_rank_bigmin.v
 extra.v
 bigmin.v
 Kosaraju.v
+acyclic.v
+kosaraju_acyclic.v
